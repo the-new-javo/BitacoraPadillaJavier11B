@@ -7,191 +7,325 @@
     <link rel="icon" type="image/png" href="componentes/recursos/logo.png">
 
     <style>
+        /* ========== RESET Y BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html, body {
             height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            scroll-behavior: smooth;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            text-align: center;
+            min-height: 100vh;
         }
 
+        /* ========== HEADER ========== */
         header {
-            padding: 20px;
-            background-color: gold;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
         }
-       
-        h1{
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(188, 19, 254, 0.1) 0%, transparent 70%);
+            animation: rotar 20s linear infinite;
+        }
+
+        @keyframes rotar {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
             color: white;
-    text-transform: uppercase;
-    text-shadow: 
-        0 0 5px #bc13fe, 
-        0 0 10px #bc13fe, 
-        0 0 20px #bc13fe, 
-        0 0 40px #bc13fe;
-    animation: parpadeo 1.5s infinite alternate;
+            text-transform: uppercase;
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 
+                0 0 10px #bc13fe, 
+                0 0 20px #bc13fe, 
+                0 0 40px #bc13fe,
+                0 0 80px #bc13fe;
+            animation: parpadeo 2s infinite alternate;
         }
+
         @keyframes parpadeo {
-    0%, 100% {
-        opacity: 1;
-        text-shadow: 
-            0 0 5px #bc13fe, 
-            0 0 10px #bc13fe, 
-            0 0 20px #bc13fe, 
-            0 0 40px #bc13fe;
-    }
-    50% {
-        opacity: 0.8;
-        text-shadow: 
-            0 0 2px #bc13fe, 
-            0 0 5px #bc13fe;
-    }
-    52%, 54% {
-        opacity: 0.5;
-        text-shadow: none;
-    }
-}
-        .semana {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 30px;
-    margin: 30px auto;
-    max-width: 95%;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    border-left: 10px solid #bc13fe;
-}
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 
+                    0 0 10px #bc13fe, 
+                    0 0 20px #bc13fe, 
+                    0 0 40px #bc13fe,
+                    0 0 80px #bc13fe;
+            }
+            50% {
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 5px #bc13fe, 
+                    0 0 15px #bc13fe,
+                    0 0 30px #bc13fe;
+            }
+        }
 
-/* Layout */
-.contenido-semana {
-    display: flex;
-    align-items: center; /* centra verticalmente */
-    justify-content: space-between;
-    gap: 40px;
-}
-
-/* Texto más bonito */
-.lado-izquierdo {
-    flex: 1;
-    font-size: 18px;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* PDF tipo "visor elegante" */
-.pdf {
-    flex: 1.3;
-    display: flex;
-    justify-content: center;
-}
-
-.pdf embed {
-    width: 100%;
-    max-width: 500px; /* controla tamaño */
-    height: 500px;
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .contenido-semana {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .pdf embed {
-        height: 400px;
-    }
-}
-
-.semana {
-    max-width: 750px;   /* controla el tamaño total */
-    width: 90%;
-    padding: 20px;
-    margin: 20px auto;
-}
-
-/* Evita que el contenido lo expanda */
-.contenido-semana {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* clave para que no se rompa */
-}
-
-/* Texto */
-.lado-izquierdo {
-    flex: 1 1 250px;
-}
-
-/* PDF controlado */
-.pdf {
-    flex: 1 1 300px;
-    display: flex;
-    justify-content: center;
-}
-
-/* PDF más pequeño SIN romper el layout */
-.pdf embed {
-    width: 100%;
-    max-width: 350px;  /* 🔥 esto es lo que realmente manda */
-    height: 450px;
-}
-
-.semana:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(188, 19, 254, 0.2);
-}
-
-.imagen {
-    flex: 1 1 300px;
-    display: flex;
-    justify-content: center;
-}
-
-.imagen img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
+        /* ========== MAIN ========== */
         main {
             flex: 1;
-            padding: 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
+        h4 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        h4::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #bc13fe, #00d4ff);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ========== SEMANAS ========== */
+        .semana {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px 30px;
+            margin: 30px auto;
+            max-width: 850px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-left: 6px solid #bc13fe;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .semana::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #bc13fe, #00d4ff, #bc13fe);
+            background-size: 200% 100%;
+            animation: gradiente 3s linear infinite;
+        }
+
+        @keyframes gradiente {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .semana:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 60px rgba(188, 19, 254, 0.25);
+        }
+
+        .semana h2 {
+            color: #1a1a2e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #bc13fe;
+            padding-left: 15px;
+        }
+
+        .contenido-semana {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .lado-izquierdo, .texto {
+            flex: 1 1 250px;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .lado-izquierdo p, .texto p {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 16px;
+            border-left: 4px solid #bc13fe;
+            margin: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* ========== PDF ========== */
+        .pdf {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .pdf embed {
+            width: 100%;
+            max-width: 400px;
+            height: 450px;
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .pdf embed:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(188, 19, 254, 0.2);
+        }
+
+        /* ========== VIDEO ========== */
+        .imagen {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imagen video {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            background: #000;
+        }
+
+        .imagen video:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(188, 19, 254, 0.2);
+        }
+
+        /* ========== FOOTER ========== */
         footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 150px;
-            border-top: 1px solid blue;
-            background-color: deepskyblue;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            border-top: 3px solid #bc13fe;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer span {
+            font-size: 1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
         }
 
         footer img {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
-    cursor: pointer;
-}
+            height: 50px;
+            width: auto;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
 
-footer img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 10px white) drop-shadow(0 0 20px #00fbff);
-}
+        footer img:hover {
+            transform: scale(1.15) rotate(-3deg);
+            filter: brightness(0) invert(1) drop-shadow(0 0 20px #bc13fe);
+            opacity: 1;
+        }
 
-        @media (max-width: 600px) {
-            footer {
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .contenido-semana {
                 flex-direction: column;
-                gap: 15px;
+                text-align: center;
+            }
+
+            .semana {
+                padding: 25px 20px;
+                margin: 20px auto;
+            }
+
+            .semana h2 {
+                font-size: 1.4rem;
+                text-align: center;
+                border-left: none;
+                padding-left: 0;
+                border-bottom: 3px solid #bc13fe;
+                padding-bottom: 10px;
+            }
+
+            .pdf embed {
+                height: 350px;
+                max-width: 100%;
+            }
+
+            .imagen video {
+                max-width: 100%;
+            }
+
+            footer {
+                justify-content: center;
                 padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .semana {
+                padding: 20px 15px;
+            }
+
+            .lado-izquierdo p, .texto p {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+
+            .pdf embed {
+                height: 280px;
             }
         }
     </style>
@@ -199,95 +333,93 @@ footer img:hover {
 
 <body>
     <header>
-        <h1>Bitácora de Tics</h1>
+        <h1>✨ Bitácora de Tics</h1>
     </header>
 
     <main>
-        <h4>Contenido de mi página WEB</h4>
+        <h4>📚 Contenido de mi página WEB</h4>
+
+        <!-- ===== SEMANA 1 ===== -->
         <div class="semana">
-    <h2>Semana 1: Mi archivo PDF</h2>
-
-    <div class="contenido-semana">
-        <div class="texto">
-            <p>A continuación puedes visualizar el documento elaborado en clase:</p>
+            <h2>📄 Semana 1: Mi archivo PDF</h2>
+            <div class="contenido-semana">
+                <div class="texto">
+                    <p>📎 A continuación puedes visualizar el documento elaborado en clase</p>
+                </div>
+                <div class="pdf">
+                    <embed src="componentes/introducción.pdf" type="application/pdf">
+                </div>
+            </div>
         </div>
 
-        <div class="pdf">
-            <embed src="componentes/introducción.pdf"
-                    type="application/pdf">
-        </div>
-    </div>
-</div>
-<!-- ✅ SEMANA NUEVA DEL VIDEO -->
-<div class="semana">
-    <h2>Semana 2: Mi Video</h2>
-
-    <div class="contenido-semana">
-        <div class="lado-izquierdo">
-            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
-        </div>
-
-        <div class="imagen">
-            <video width="400" controls>
-                <source src="componentes/mivideo.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-        </div>
-</div>
-<div class="semana">
-    <h2>Semana 3: Circuito de Arduino</h2>
-
-    <div class="contenido-semana">
-        <div class="lado-izquierdo">
-            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        <!-- ===== SEMANA 2 ===== -->
+        <div class="semana">
+            <h2>🎥 Semana 2: Mi Video</h2>
+            <div class="contenido-semana">
+                <div class="lado-izquierdo">
+                    <p>▶️ A continuación puedes ver el video del trabajo realizado en clase</p>
+                </div>
+                <div class="imagen">
+                    <video controls>
+                        <source src="componentes/mivideo.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
         </div>
 
-        <div class="imagen">
-            <video width="400" controls>
-                <source src="componentes/arduone.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-    
-    </div>
-<div class="semana">
-    <h2>Semana 4: Circuito de tres LED 1</h2>
-
-    <div class="contenido-semana">
-        <div class="lado-izquierdo">
-            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
-        </div>
-
-        <div class="imagen">
-            <video width="400" controls>
-                <source src="componentes/tresled1.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-        </div>
-<div class="semana">
-    <h2>Semana 5: Circuito de tres LED 2</h2>
-
-    <div class="contenido-semana">
-        <div class="lado-izquierdo">
-            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        <!-- ===== SEMANA 3 ===== -->
+        <div class="semana">
+            <h2>⚡ Semana 3: Circuito de Arduino</h2>
+            <div class="contenido-semana">
+                <div class="lado-izquierdo">
+                    <p>▶️ A continuación puedes ver el video del trabajo realizado en clase</p>
+                </div>
+                <div class="imagen">
+                    <video controls>
+                        <source src="componentes/arduone.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
         </div>
 
-        <div class="imagen">
-            <video width="400" controls>
-                <source src="componentes/tresled2.mp4" type="video/mp4">
-            </video>
+        <!-- ===== SEMANA 4 ===== -->
+        <div class="semana">
+            <h2>💡 Semana 4: Circuito de tres LED 1</h2>
+            <div class="contenido-semana">
+                <div class="lado-izquierdo">
+                    <p>▶️ A continuación puedes ver el video del trabajo realizado en clase</p>
+                </div>
+                <div class="imagen">
+                    <video controls>
+                        <source src="componentes/tresled1.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
         </div>
-    </div>
-    
+
+        <!-- ===== SEMANA 5 ===== -->
+        <div class="semana">
+            <h2>💡 Semana 5: Circuito de tres LED 2</h2>
+            <div class="contenido-semana">
+                <div class="lado-izquierdo">
+                    <p>▶️ A continuación puedes ver el video del trabajo realizado en clase</p>
+                </div>
+                <div class="imagen">
+                    <video controls>
+                        <source src="componentes/tresled2.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <span>2026 @The_New_Javo</span>
-        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="" width="200" height="50">
+        <span>© 2026 @The_New_Javo</span>
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo" width="200" height="50">
     </footer>
 </body>
 </html>
