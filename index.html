@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora Tecnología J. Padilla</title>
+    <link rel="icon" type="image/png" href="componentes/recursos/logo.png">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: gold;
+        }
+       
+        h1{
+            color: white;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 5px #bc13fe, 
+        0 0 10px #bc13fe, 
+        0 0 20px #bc13fe, 
+        0 0 40px #bc13fe;
+    animation: parpadeo 1.5s infinite alternate;
+        }
+        @keyframes parpadeo {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 5px #bc13fe, 
+            0 0 10px #bc13fe, 
+            0 0 20px #bc13fe, 
+            0 0 40px #bc13fe;
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 
+            0 0 2px #bc13fe, 
+            0 0 5px #bc13fe;
+    }
+    52%, 54% {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+}
+        .semana {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 95%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    border-left: 10px solid #bc13fe;
+}
+
+/* Layout */
+.contenido-semana {
+    display: flex;
+    align-items: center; /* centra verticalmente */
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Texto más bonito */
+.lado-izquierdo {
+    flex: 1;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* PDF tipo "visor elegante" */
+.pdf {
+    flex: 1.3;
+    display: flex;
+    justify-content: center;
+}
+
+.pdf embed {
+    width: 100%;
+    max-width: 500px; /* controla tamaño */
+    height: 500px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenido-semana {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pdf embed {
+        height: 400px;
+    }
+}
+
+.semana {
+    max-width: 750px;   /* controla el tamaño total */
+    width: 90%;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+/* Evita que el contenido lo expanda */
+.contenido-semana {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* clave para que no se rompa */
+}
+
+/* Texto */
+.lado-izquierdo {
+    flex: 1 1 250px;
+}
+
+/* PDF controlado */
+.pdf {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+}
+
+/* PDF más pequeño SIN romper el layout */
+.pdf embed {
+    width: 100%;
+    max-width: 350px;  /* 🔥 esto es lo que realmente manda */
+    height: 450px;
+}
+
+.semana:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(188, 19, 254, 0.2);
+}
+
+.imagen {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+        main {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 150px;
+            border-top: 1px solid blue;
+            background-color: deepskyblue;
+        }
+
+        footer img {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+    cursor: pointer;
+}
+
+footer img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px white) drop-shadow(0 0 20px #00fbff);
+}
+
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Bitácora de Tics</h1>
+    </header>
+
+    <main>
+        <h4>Contenido de mi página WEB</h4>
+        <div class="semana">
+    <h2>Semana 1: Mi archivo PDF</h2>
+
+    <div class="contenido-semana">
+        <div class="texto">
+            <p>A continuación puedes visualizar el documento elaborado en clase:</p>
+        </div>
+
+        <div class="pdf">
+            <embed src="componentes/introducción.pdf"
+                    type="application/pdf">
+        </div>
+    </div>
+</div>
+<!-- ✅ SEMANA NUEVA DEL VIDEO -->
+<div class="semana">
+    <h2>Semana 2: Mi Video</h2>
+
+    <div class="contenido-semana">
+        <div class="lado-izquierdo">
+            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        </div>
+
+        <div class="imagen">
+            <video width="400" controls>
+                <source src="componentes/mivideo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+        </div>
+</div>
+<div class="semana">
+    <h2>Semana 3: Circuito de Arduino</h2>
+
+    <div class="contenido-semana">
+        <div class="lado-izquierdo">
+            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        </div>
+
+        <div class="imagen">
+            <video width="400" controls>
+                <source src="componentes/arduone.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    
+    </div>
+<div class="semana">
+    <h2>Semana 4: Circuito de tres LED 1</h2>
+
+    <div class="contenido-semana">
+        <div class="lado-izquierdo">
+            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        </div>
+
+        <div class="imagen">
+            <video width="400" controls>
+                <source src="componentes/tresled1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+        </div>
+<div class="semana">
+    <h2>Semana 5: Circuito de tres LED 2</h2>
+
+    <div class="contenido-semana">
+        <div class="lado-izquierdo">
+            <p>A continuación puedes ver el video del trabajo realizado en clase:</p>
+        </div>
+
+        <div class="imagen">
+            <video width="400" controls>
+                <source src="componentes/tresled2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    
+    </main>
+
+    <footer>
+        <span>2026 @The_New_Javo</span>
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="" width="200" height="50">
+    </footer>
+</body>
+</html>
