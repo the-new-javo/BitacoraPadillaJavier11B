@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -18,22 +17,101 @@
         html, body {
             height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #eef1f5;
         }
 
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            
+            /* CAPA 1: Imagen de fondo ajustada */
+            background-image: url('componentes/fondogengar.png');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            position: relative;
         }
 
-        /* ========== HEADER MEJORADO ========== */
+        /* ========== CAPA 2: HUMO MORADO GASTLY ========== */
+        .smoke-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .smoke {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(192, 38, 211, 0.75) 0%, rgba(126, 34, 206, 0.4) 45%, rgba(76, 29, 149, 0) 70%);
+            filter: blur(30px);
+            mix-blend-mode: screen;
+            animation: floatSmoke 8s infinite alternate ease-in-out;
+        }
+
+        .smoke-1 {
+            width: 450px;
+            height: 450px;
+            bottom: 10%;
+            left: 2%;
+            animation-duration: 9s;
+        }
+
+        .smoke-2 {
+            width: 500px;
+            height: 500px;
+            bottom: 15%;
+            right: 2%;
+            animation-duration: 11s;
+            animation-delay: -3s;
+        }
+
+        .smoke-3 {
+            width: 400px;
+            height: 400px;
+            top: 15%;
+            right: 5%;
+            animation-duration: 7s;
+            animation-delay: -5s;
+        }
+
+        .smoke-4 {
+            width: 380px;
+            height: 380px;
+            top: 25%;
+            left: 10%;
+            animation-duration: 10s;
+            animation-delay: -2s;
+        }
+
+        @keyframes floatSmoke {
+            0% {
+                transform: translate(0, 0) scale(0.9) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(30px, -25px) scale(1.15) rotate(20deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(-25px, 20px) scale(0.95) rotate(-15deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* ========== CAPA 3: HEADER ========== */
         header {
+            position: relative;
+            z-index: 2;
             padding: 35px 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #1a1a2e 100%);
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(45, 45, 68, 0.95) 50%, rgba(26, 26, 46, 0.95) 100%);
             text-align: center;
             border-bottom: 4px solid #6c5ce7;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         header h1 {
@@ -42,7 +120,6 @@
             letter-spacing: 6px;
             color: #ffffff;
             text-transform: uppercase;
-            /* Sombras para que resalte sobre cualquier fondo */
             text-shadow: 
                 0 0 15px rgba(108, 92, 231, 0.6),
                 0 0 30px rgba(108, 92, 231, 0.4),
@@ -68,7 +145,7 @@
         }
 
         header p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             margin-top: 8px;
             letter-spacing: 3px;
@@ -77,8 +154,10 @@
 
         /* ========== MAIN ========== */
         main {
+            position: relative;
+            z-index: 2;
             flex: 1;
-            padding: 30px 20px;
+            padding: 30px 15px;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
@@ -87,7 +166,8 @@
         h4 {
             text-align: center;
             font-size: 1.5rem;
-            color: #2d2d44;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
             margin-bottom: 35px;
             font-weight: 300;
             letter-spacing: 2px;
@@ -104,49 +184,50 @@
             border-radius: 2px;
         }
 
-        /* ========== SEMANAS ========== */
+        /* ========== SEMANAS (ANCHO REAJUSTADO PARA DESTAPAR A HAUNTER) ========== */
         .semana {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 850px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            padding: 22px;
+            margin: 30px auto 30px calc(50% - 270px); /* Ligera inclinación a la izquierda */
+            max-width: 500px; /* Ancho más angosto para dejar espacio total a Haunter */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             border-left: 6px solid #6c5ce7;
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .semana:hover {
             transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.12);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4);
         }
 
         .semana h2 {
             color: #1a1a2e;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-left: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-left: 12px;
             border-left: 4px solid #6c5ce7;
         }
 
         .contenido-semana {
             display: flex;
-            gap: 35px;
+            gap: 15px;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
 
         .lado-izquierdo, .texto {
-            flex: 1 1 250px;
-            font-size: 1rem;
+            flex: 1 1 160px;
+            font-size: 0.9rem;
             color: #555;
-            line-height: 1.7;
+            line-height: 1.5;
         }
 
         .lado-izquierdo p, .texto p {
             background: #f8f9fc;
-            padding: 18px 22px;
+            padding: 12px 15px;
             border-radius: 12px;
             border-left: 4px solid #6c5ce7;
             margin: 0;
@@ -154,15 +235,16 @@
 
         /* ========== PDF ========== */
         .pdf {
-            flex: 1 1 300px;
+            flex: 1 1 220px;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
         .pdf embed {
             width: 100%;
-            max-width: 400px;
-            height: 450px;
+            max-width: 320px;
+            height: 350px;
             border-radius: 14px;
             border: 1px solid #e8ecf1;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -176,14 +258,15 @@
 
         /* ========== VIDEO ========== */
         .imagen {
-            flex: 1 1 300px;
+            flex: 1 1 220px;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
         .imagen video {
             width: 100%;
-            max-width: 450px;
+            max-width: 320px;
             border-radius: 14px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             background: #1a1a2e;
@@ -198,11 +281,13 @@
 
         /* ========== FOOTER ========== */
         footer {
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 18px 50px;
-            background: #1a1a2e;
+            background: rgba(26, 26, 46, 0.95);
             color: rgba(255, 255, 255, 0.7);
             border-top: 3px solid #6c5ce7;
             flex-wrap: wrap;
@@ -240,8 +325,9 @@
             }
 
             .semana {
-                padding: 22px 20px;
+                padding: 20px 18px;
                 margin: 20px auto;
+                max-width: 100%;
             }
 
             .semana h2 {
@@ -253,7 +339,7 @@
             }
 
             .pdf embed {
-                height: 350px;
+                height: 320px;
                 max-width: 100%;
             }
 
@@ -276,22 +362,31 @@
             }
 
             .semana {
-                padding: 18px 15px;
+                padding: 16px 14px;
             }
 
             .lado-izquierdo p, .texto p {
-                padding: 14px 16px;
-                font-size: 0.9rem;
+                padding: 12px 14px;
+                font-size: 0.85rem;
             }
 
             .pdf embed {
-                height: 280px;
+                height: 260px;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- CAPA DE HUMO MORADO ANIMADO -->
+    <div class="smoke-container">
+        <div class="smoke smoke-1"></div>
+        <div class="smoke smoke-2"></div>
+        <div class="smoke smoke-3"></div>
+        <div class="smoke smoke-4"></div>
+    </div>
+
     <header>
         <h1>📓 Bitácora de Tics</h1>
         <p>J. Padilla · Tecnología</p>
@@ -358,7 +453,8 @@
             </div>
         </div>
 
-         <div class="semana">
+        <!-- ===== SEMANA 5 ===== -->
+        <div class="semana">
             <h2>Semana 5: Semáforo</h2>
             <div class="contenido-semana">
                 <div class="lado-izquierdo">
@@ -372,6 +468,7 @@
             </div>
         </div>
 
+        <!-- ===== SEMANA 6 ===== -->
         <div class="semana">
             <h2>Semana 6: Sensor Ultrasónico</h2>
             <div class="contenido-semana">
@@ -388,11 +485,10 @@
     </main>
 
     <footer>
-    <span>2026 @The_New_Javo</span>
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="componentes/recursos/logocc.png" alt="Logo Colegio Capouilliez" height="45">
-    </div>
-</footer>
+        <span>2026 @The_New_Javo</span>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="componentes/recursos/logocc.png" alt="Logo Colegio Capouilliez" height="45">
+        </div>
+    </footer>
 </body>
 </html>
-
