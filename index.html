@@ -24,8 +24,8 @@
             flex-direction: column;
             min-height: 100vh;
             
-            /* CAPA 1: Imagen de fondo ajustada */
-            background-image: url('componentes/fondogengar.png');
+            /* CAPA 1: Imagen de fondo */
+            background-image: url('componentes/fondogengar');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
@@ -184,67 +184,66 @@
             border-radius: 2px;
         }
 
-        /* ========== SEMANAS (ANCHO REAJUSTADO PARA DESTAPAR A HAUNTER) ========== */
+        /* ========== SEMANAS (ANCHO AUMENTADO A 800PX) ========== */
         .semana {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.90);
             border-radius: 20px;
-            padding: 22px;
-            margin: 30px auto 30px calc(50% - 270px); /* Ligera inclinación a la izquierda */
-            max-width: 500px; /* Ancho más angosto para dejar espacio total a Haunter */
+            padding: 28px 32px;
+            margin: 35px auto;
+            max-width: 800px; /* Ancho más amplio */
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             border-left: 6px solid #6c5ce7;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .semana:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .semana h2 {
             color: #1a1a2e;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             padding-left: 12px;
             border-left: 4px solid #6c5ce7;
         }
 
         .contenido-semana {
             display: flex;
-            gap: 15px;
+            gap: 25px;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
 
         .lado-izquierdo, .texto {
-            flex: 1 1 160px;
-            font-size: 0.9rem;
-            color: #555;
+            flex: 1 1 220px;
+            font-size: 0.98rem;
+            color: #444;
             line-height: 1.5;
         }
 
         .lado-izquierdo p, .texto p {
-            background: #f8f9fc;
-            padding: 12px 15px;
+            background: rgba(248, 249, 252, 0.9);
+            padding: 16px 18px;
             border-radius: 12px;
             border-left: 4px solid #6c5ce7;
             margin: 0;
         }
 
-        /* ========== PDF ========== */
+        /* ========== PDF MÁS AMPLIO ========== */
         .pdf {
-            flex: 1 1 220px;
+            flex: 1.6 1 380px;
             display: flex;
             justify-content: center;
-            width: 100%;
         }
 
         .pdf embed {
             width: 100%;
-            max-width: 320px;
-            height: 350px;
+            height: 420px;
             border-radius: 14px;
             border: 1px solid #e8ecf1;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -256,17 +255,16 @@
             box-shadow: 0 12px 35px rgba(108, 92, 231, 0.12);
         }
 
-        /* ========== VIDEO ========== */
+        /* ========== VIDEO MÁS AMPLIO ========== */
         .imagen {
-            flex: 1 1 220px;
+            flex: 1.6 1 380px;
             display: flex;
             justify-content: center;
-            width: 100%;
         }
 
         .imagen video {
             width: 100%;
-            max-width: 320px;
+            max-height: 400px;
             border-radius: 14px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             background: #1a1a2e;
@@ -313,21 +311,15 @@
         }
 
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-                letter-spacing: 3px;
-            }
-
+        @media (max-width: 820px) {
             .contenido-semana {
                 flex-direction: column;
                 text-align: center;
             }
 
             .semana {
-                padding: 20px 18px;
+                padding: 22px 20px;
                 margin: 20px auto;
-                max-width: 100%;
             }
 
             .semana h2 {
@@ -339,19 +331,7 @@
             }
 
             .pdf embed {
-                height: 320px;
-                max-width: 100%;
-            }
-
-            .imagen video {
-                max-width: 100%;
-            }
-
-            footer {
-                justify-content: center;
-                padding: 20px;
-                flex-direction: column;
-                text-align: center;
+                height: 350px;
             }
         }
 
@@ -371,7 +351,14 @@
             }
 
             .pdf embed {
-                height: 260px;
+                height: 280px;
+            }
+
+            footer {
+                justify-content: center;
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
