@@ -563,7 +563,7 @@
     <main>
         <!-- IMAGEN DEL POKÉMON FLOTANTE -->
         <div class="pokemon-avatar-wrapper">
-            <img id="pokemonAvatar" src="componentes/recursos/gengar.png" alt="Pokémon Avatar">
+            <img id="pokemonAvatar" alt="Pokémon Avatar">
         </div>
 
         <!-- PANEL FIJO EN 2 COLUMNAS -->
@@ -701,7 +701,10 @@
 
             const botones = document.querySelectorAll('.btn-pkmn-item');
             botones.forEach(btn => btn.classList.remove('active'));
-            elementoBtn.classList.add('active');
+
+            if (elementoBtn) {
+                elementoBtn.classList.add('active');
+            }
 
             const imgPokemon = document.getElementById('pokemonAvatar');
 
@@ -719,6 +722,12 @@
                 imgPokemon.src = 'componentes/mewtwo.png';
             }
         }
+
+        // CARGAR TEMA Y PERSONAJE DE GENGAR AL INICIAR LA PÁGINA
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnGengarInicial = document.querySelector('.btn-pkmn-item');
+            cambiarTema('gengar', btnGengarInicial);
+        });
 
         // FUNCIONES MODAL
         function abrirModal(titulo, texto, tipo, ruta) {
